@@ -1,1 +1,145 @@
-sfgh fhhj
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year - હિરેનભાઈ કરમુર</title>
+    <style>
+        /* બેકગ્રાઉન્ડ અને મુખ્ય ડિઝાઇન */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0b0c10;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; /* સ્ક્રોલ બાર છુપાવવા */
+            text-align: center;
+        }
+
+        /* ટીકર (Ticker) ડિઝાઇન */
+        .ticker-container {
+            width: 100%;
+            background-color: #ff9800;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 100;
+        }
+        
+        .ticker-text {
+            display: inline-block;
+            white-space: nowrap;
+            padding: 10px 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #000;
+            animation: ticker 15s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* મુખ્ય મેસેજ ડિઝાઇન */
+        .main-content {
+            position: relative;
+            top: 35vh;
+            z-index: 10;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            color: #ffeb3b;
+            margin: 10px 0;
+            text-shadow: 0px 0px 15px #ffeb3b;
+        }
+
+        .wish {
+            font-size: 2.5rem;
+            color: #4caf50;
+            margin: 10px 0;
+            text-shadow: 0px 0px 10px #4caf50;
+        }
+
+        .sub-wish {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        /* Live ઇમોજી માટે ક્લાસ */
+        .emoji {
+            position: absolute;
+            font-size: 30px;
+            user-select: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ઉપર ચાલતું ટીકર -->
+    <div class="ticker-container">
+        <div class="ticker-text">
+            ✨ હિરેનભાઈ કરમુર તરફથી આપ સૌને નવા વર્ષની હાર્દિક શુભકામનાઓ! Happy New Year! ✨
+        </div>
+    </div>
+
+    <!-- વચ્ચેનો મેસેજ -->
+    <div class="main-content">
+        <div class="name">હિરેનભાઈ કરમુર</div>
+        <div class="wish">Happy New Year! 🎉</div>
+        <div class="sub-wish">આ નવું વર્ષ તમારા જીવનમાં સુખ, શાંતિ અને સમૃદ્ધિ લાવે.</div>
+    </div>
+
+    <!-- ઇમોજી માટેનું કન્ટેનર -->
+    <div id="emoji-container"></div>
+
+    <!-- Live ઇમોજી માટેની જાવાસ્ક્રિપ્ટ (JavaScript) -->
+    <script>
+        const emojis = ['🎉', '✨', '🥳', '🎊', '🎆', '🌟', '💥', '🎈'];
+        const container = document.getElementById('emoji-container');
+
+        function createEmoji() {
+            const emojiEl = document.createElement('div');
+            emojiEl.classList.add('emoji');
+            // રેન્ડમ ઇમોજી પસંદ કરવા
+            emojiEl.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // સ્ક્રીન પર રેન્ડમ જગ્યાએથી પડવા માટે
+            emojiEl.style.left = Math.random() * 100 + 'vw';
+            
+            // પડવાની સ્પીડ રેન્ડમ સેટ કરવા (3 થી 6 સેકન્ડ)
+            const duration = Math.random() * 3 + 3;
+            emojiEl.style.animationDuration = duration + 's';
+            
+            // ઇમોજીની સાઈઝ નાની મોટી કરવા
+            emojiEl.style.fontSize = (Math.random() * 20 + 20) + 'px';
+
+            container.appendChild(emojiEl);
+
+            // એનિમેશન પૂરું થયા પછી ઇમોજીને કાઢી નાખવા
+            setTimeout(() => {
+                emojiEl.remove();
+            }, duration * 1000);
+        }
+
+        // દર 300 મિલીસેકન્ડે નવો ઇમોજી બનાવવો
+        setInterval(createEmoji, 300);
+    </script>
+
+</body>
+</html>
